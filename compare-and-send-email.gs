@@ -14,8 +14,8 @@ For any query/help contact me at umr55766@gmail.com
 
 var SHEET_ID = "***************************";
 var SHEET_NAME = "Sheet1";
-var source = "F7";
-var destination = "F5";
+var source_cell = "F7";
+var destination_cell = "F5";
 var to = "umr55766@gmail.com";
 var cc = "umr55766@gmail.com";
 var subject = "ALERT : Your Is Over Budget!";
@@ -23,9 +23,9 @@ var body = "Your Is Over Budget, Please have a look!";
 
 function send_alert() {
   var sheet = SpreadsheetApp.openById(SHEET_ID).getSheetByName(SHEET_NAME);
-  source = String(sheet.getRange(source).getDisplayValue()).replace("$", "").replace(",", "")
-  destination = String(sheet.getRange(destination).getDisplayValue()).replace("$", "").replace(",", "")
-  var difference = Number(destination) - Number(source);
+  source_cell = String(sheet.getRange(source_cell).getDisplayValue()).replace("$", "").replace(",", "")
+  destination_cell = String(sheet.getRange(destination_cell).getDisplayValue()).replace("$", "").replace(",", "")
+  var difference = Number(destination_cell) - Number(source_cell);
   if (difference < 0) {
     MailApp.sendEmail({
       "to": to,
